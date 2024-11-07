@@ -1,0 +1,186 @@
+/* NEWSLETTER */
+#newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #e2e2e2;
+  padding: 20px;
+  margin-top: 50px;
+
+  span {
+    font-weight: 550;
+    font-size: 15px;
+  }
+
+  input {
+    border: none;
+    padding: 5px 10px;
+    width: 300px;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+  }
+
+  button:hover {
+    background-color: #000000;
+  }
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #003d4a;
+  color: white;
+
+  #top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+    #about {
+      width: 60%;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0px;
+    }
+  }
+
+  #bottom {
+    text-align: center;
+    background-color: #000000;
+    width: 100%;
+    padding: 5px 0px;
+  }
+
+  .footeritem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #links {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .footerheading {
+    font-weight: bold;
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  #header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .itemCards {
+    flex-direction: column;
+  }
+  #content {
+    flex-direction: column;
+    align-items: center;
+
+    #about {
+      width: 90%;
+    }
+    #howto {
+      width: 90%;
+    }
+  }
+  #exploreCards {
+    display: none;
+  }
+  footer {
+    #top {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+
+      #about {
+        width: 90%;
+      }
+    }
+  }
+  #banner {
+    margin: 0px;
+    padding: 0px;
+  }
+  #banner img {
+    border-radius: 0px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #header {
+    flex-direction: column;
+    gap: 20px;
+
+    #searchbar {
+      input {
+        width: 300px;
+      }
+    }
+  }
+  #navbar {
+    flex-direction: column;
+    gap: 20px;
+
+    #navlinks {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  .itemCards {
+    flex-direction: column;
+  }
+  #content {
+    flex-direction: column;
+    align-items: center;
+
+    #about {
+      width: 80%;
+    }
+    #howto {
+      width: 80%;
+    }
+  }
+  #newsletter {
+    flex-direction: column;
+    gap: 20px;
+  }
+  footer {
+    #top {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+
+      #about {
+        width: 80%;
+      }
+    }
+  }
+}

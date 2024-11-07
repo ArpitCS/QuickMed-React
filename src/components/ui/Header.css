@@ -1,0 +1,165 @@
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #2b97a4;
+  padding: 10px 50px;
+}
+
+#logo img {
+  height: 60px;
+}
+
+#searchbar {
+  display: flex;
+  transform: translateX(20px);
+
+  input {
+    width: 450px;
+    padding: 0px 30px;
+    border: none;
+    border-radius: 22px;
+    font-size: 13px;
+    height: 40px;
+  }
+
+  span {
+    background-color: #1a1d29;
+    color: white;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    transform: translateX(-40px);
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+}
+
+#right-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+#cart {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .fa-cart-shopping {
+    margin-right: 10px;
+  }
+
+  .fa-cart-shopping:hover {
+    cursor: pointer;
+  }
+
+  #amount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgb(171, 244, 255);
+  }
+}
+
+#profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  color: #165057;
+  padding: 5px 10px;
+  border-radius: 50%;
+
+  a {
+    color: #165057;
+    text-decoration: none;
+  }
+}
+
+#profile:hover {
+  cursor: pointer;
+  background-color: #2b97a4;
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+nav {
+  padding: 7px 70px !important;
+  background-color: #e7f1f4 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-toggler {
+    margin: 0px auto;
+  }
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 70px;
+  background-color: #e7f1f4;
+}
+
+#navbar #navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.nav-item {
+  text-align: center;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item a:hover {
+  text-decoration: underline;
+}
+
+.nav-item i {
+  margin-right: 8px;
+}
+
+#consult {
+  text-align: center;
+  background-color: #155b63;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+#consult:hover {
+  background-color: #2b97a4;
+  color: white;
+}
