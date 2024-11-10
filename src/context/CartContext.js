@@ -8,12 +8,10 @@ const CartProvider = ({ children }) => {
         return storedCart ? JSON.parse(storedCart) : [];
     });
 
-    // Load cart from local storage on mount
     useEffect(() => {
         fetchCart();
     }, []);
 
-    // Save cart to local storage whenever it changes
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);

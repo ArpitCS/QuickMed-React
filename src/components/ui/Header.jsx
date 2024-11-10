@@ -1,10 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { Link, useNavigate } from "react-router-dom";
+import { Modal, Button, Form } from "react-bootstrap";
 import "./Header.css";
 
 import logoFull from "../../assets/logo-full.png";
+import consultImage from "../../assets/consult-image.png";
 
-const Header = () => {
+const Header = ({ searchQuery, setSearchQuery }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { amount, fetchCart } = useContext(CartContext);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    fetchCart();
+  }, [fetchCart]);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleSearch = () => {
+    navigate(`/store?search=${encodeURIComponent(searchQuery)}`);
+  };
+
   return (
     <>
       <header>
@@ -15,10 +38,20 @@ const Header = () => {
             </Link>
           </div>
           <div id="searchbar">
-            <input type="text" placeholder="Search products" id="searchInput" />
-            <span id="searchButton">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </span>
+            {window.location.pathname === "/store" && (
+              <>
+                <input
+                  type="text"
+                  placeholder="Search products"
+                  id="searchInput"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <span id="searchButton" onClick={handleSearch}>
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </span>
+              </>
+            )}
           </div>
           <div id="right-header">
             <div id="cart">
@@ -26,7 +59,7 @@ const Header = () => {
                 <i className="fa-solid fa-cart-shopping"></i>
                 <div id="amount">
                   <i className="fa-solid fa-rupee-sign">:</i>
-                  <div id="cart-amount">XX,XXX</div>
+                  <div id="cart-amount">{amount.toLocaleString()}</div>
                 </div>
               </Link>
             </div>
@@ -84,7 +117,7 @@ const Header = () => {
                 </li>
               </ul>
               <div id="consult">
-                <span id="consultBtn">
+                <span id="consultBtn" onClick={openModal}>
                   <i className="fa-solid fa-phone"></i> Consult
                 </span>
               </div>
@@ -93,80 +126,55 @@ const Header = () => {
         </nav>
       </header>
 
-      <div id="consultModalContainer">
-        <div className="modal" tabIndex="-1" role="dialog">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Consulting Appointment</h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  id="closeBtn"
-                >
-                  <span aria-hidden="true">
-                    <i className="fa fa-close"></i>
-                  </span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form action="POST">
-                  <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="name"
-                      placeholder="Enter Name"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="email"
-                      placeholder="Enter Email"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone:</label>
-                    <input
-                      type="tel"
-                      className="form-control"
-                      id="phone"
-                      placeholder="Enter Phone"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="date">Date:</label>
-                    <input type="date" className="form-control" id="date" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="time">Time:</label>
-                    <input type="time" className="form-control" id="time" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="age">Age:</label>
-                    <input type="number" className="form-control" id="age" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="address">Address:</label>
-                    <textarea id="address" name="address"></textarea>
-                  </div>
-                </form>
-              </div>
-              <div className="modal-footer">
-                <button type="button" id="bookBtn" className="btn">
-                  Book Appointment
-                </button>
-              </div>
-            </div>
+      <Modal show={isModalOpen} onHide={closeModal} className="consult-modal">
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body closeButton>
+          <div className="consult-left">
+            <img
+              src={consultImage}
+              alt="Consult Image"
+              className="consult-image"
+            />
+            <h1>Online Doctor</h1>
+            <h2>CONSULTATION</h2>
           </div>
-        </div>
-      </div>
+          <div className="consult-right">
+            <Form className="consult-form">
+              <Form.Group controlId="name" className="form-group">
+                <Form.Label>Name:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Name" />
+              </Form.Group>
+              <Form.Group controlId="email" className="form-group">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control type="email" placeholder="Enter Email" />
+              </Form.Group>
+              <Form.Group controlId="phone" className="form-group">
+                <Form.Label>Phone:</Form.Label>
+                <Form.Control type="tel" placeholder="Enter Phone" />
+              </Form.Group>
+              <Form.Group controlId="date" className="form-group">
+                <Form.Label>Date:</Form.Label>
+                <Form.Control type="date" />
+              </Form.Group>
+              <Form.Group controlId="time" className="form-group">
+                <Form.Label>Time:</Form.Label>
+                <Form.Control type="time" />
+              </Form.Group>
+              <Form.Group controlId="age" className="form-group">
+                <Form.Label>Age:</Form.Label>
+                <Form.Control type="number" />
+              </Form.Group>
+              <Form.Group controlId="address" className="form-group">
+                <Form.Label>Address:</Form.Label>
+                <Form.Control as="textarea" rows={3} />
+              </Form.Group>
+            </Form>
+            <Button className="btn-submit" variant="" onClick={closeModal}>
+              Book Appointment
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

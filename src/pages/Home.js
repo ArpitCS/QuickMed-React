@@ -6,13 +6,15 @@ import "./Home.css";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 
+import PopularProducts from "../components/store/PopularProducts";
+
 import banner1 from "../assets/carousel/1.png";
 import banner2 from "../assets/carousel/2.png";
 import banner3 from "../assets/carousel/3.png";
 import banner4 from "../assets/carousel/4.png";
 
 import diabetes from "../assets/concerns/diabetes.jpg";
-import heartcare from "../assets/concerns/heartcare.jpg"; 
+import heartcare from "../assets/concerns/heartcare.jpg";
 import bones from "../assets/concerns/bones.jpeg";
 import kidney from "../assets/concerns/kidney.jpg";
 import derma from "../assets/concerns/derma.jpg";
@@ -40,32 +42,16 @@ const Home = () => {
           >
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <img
-                  src={banner1}
-                  className="d-block w-100"
-                  alt="Image 1"
-                />
+                <img src={banner1} className="d-block w-100" alt="Image 1" />
               </div>
               <div className="carousel-item">
-                <img
-                  src={banner2}
-                  className="d-block w-100"
-                  alt="Image 2"
-                />
+                <img src={banner2} className="d-block w-100" alt="Image 2" />
               </div>
               <div className="carousel-item">
-                <img
-                  src={banner3}
-                  className="d-block w-100"
-                  alt="Image 3"
-                />
+                <img src={banner3} className="d-block w-100" alt="Image 3" />
               </div>
               <div className="carousel-item">
-                <img
-                  src={banner4}
-                  className="d-block w-100"
-                  alt="Image 4"
-                />
+                <img src={banner4} className="d-block w-100" alt="Image 4" />
               </div>
             </div>
             <button
@@ -175,7 +161,7 @@ const Home = () => {
             <h2>Popular Products</h2>
             <a href="html/store.html">View All</a>
           </div>
-          <div id="popular-cards"></div>
+          <PopularProducts />
         </div>
       </div>
 
@@ -191,11 +177,19 @@ const Home = () => {
               <img src={heartcare} alt="" />
               <p>Heart Care</p>
             </div>
-            <div className="itemCard" value="Joints Care" filter-type="concerns">
+            <div
+              className="itemCard"
+              value="Joints Care"
+              filter-type="concerns"
+            >
               <img src={bones} alt="" />
               <p>Bone, Joint & Muscle Care</p>
             </div>
-            <div className="itemCard" value="Kidney Care" filter-type="concerns">
+            <div
+              className="itemCard"
+              value="Kidney Care"
+              filter-type="concerns"
+            >
               <img src={kidney} alt="" />
               <p>Kidney Care</p>
             </div>

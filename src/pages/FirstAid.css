@@ -1,24 +1,27 @@
-* {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.first-aid-card {
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.first-aid-card:hover {
-  transform: translateY(-5px);
-  box-shadow: #2b97a4 0px 5px, #2b98a4b9 0px 10px, #2b98a481 0px 15px,
-    #2b98a449 0px 20px, #2b98a418 0px 25px;
-}
-
-.card-img-top {
-  height: 200px;
-  object-fit: contain;
+#first-aid-module {
+  .first-aid-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+  }
+  
+  .first-aid-card:hover {
+    transform: translateY(-5px);
+    box-shadow: #2b97a4 0px 5px,
+                #2b98a4b9 0px 10px, 
+                #2b98a481 0px 15px, 
+                #2b98a449 0px 20px, 
+                #2b98a418 0px 25px;
+  }
+  
+  .first-aid-container
+  .card-img-top {
+    height: 200px;
+    object-fit: contain;
+  }
+  
 }
 
 .step-image {
@@ -34,9 +37,10 @@
 .step-description {
   margin-top: 1rem;
   font-size: 1.1rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 5px;
+  padding: 0.4rem;
+  border: 2px solid white;
+  background-color: #2b97a4;
+  border-radius: 25px;
 }
 
 .step-counter {

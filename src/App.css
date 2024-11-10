@@ -1,10 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
 * {
-  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Manrope", serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Manrope", serif;
+  font-weight: 700;
 }

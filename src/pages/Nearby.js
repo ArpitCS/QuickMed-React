@@ -1,13 +1,15 @@
 import React from 'react'
 
 import Header from '../components/ui/Header'
+import Footer from '../components/ui/Footer'
 
 const Nearby = () => {
   return (
-    <div>
+    <>
       <Header />
-      Nearby
-    </div>
+      <div>Nearby</div>
+      <Footer />  
+    </>
   )
 }
 
