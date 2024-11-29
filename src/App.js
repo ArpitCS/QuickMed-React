@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Switch,
+  Navigate,
 } from "react-router-dom";
 
 import "./App.css";
@@ -21,7 +22,9 @@ import Dashboard from "./pages/Dashboard";
 import Blogs from "./pages/Blogs";
 import Nearby from "./pages/Nearby";
 import Product from "./pages/Product";
+import Checkout from "./pages/Checkout";
 
+import PrivateRoute from "./config/PrivateRoute";
 
 const App = () => {
   return (
@@ -35,10 +38,11 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />}/>} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/nearby" element={<Nearby />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Router>
     </CartProvider>

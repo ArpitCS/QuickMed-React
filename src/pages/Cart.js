@@ -4,6 +4,7 @@ import "./Cart.css";
 
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const {
@@ -114,13 +115,13 @@ const Cart = () => {
             </div>
           </div>
           <div className="total-footer">
-            <a
+            <Link
               className="btn btn-primary"
               id="checkoutBtn"
-              href="checkout.html"
+              to="/checkout"
             >
               Checkout
-            </a>
+            </Link>
             <button
               type="button"
               id="clearBtn"

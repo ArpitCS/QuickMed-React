@@ -9,23 +9,8 @@ const CartProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        fetchCart();
-    }, []);
-
-    useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
-
-    const fetchCart = () => {
-        const storedCart = JSON.parse(localStorage.getItem('cart'));
-        if (storedCart) {
-            setCart(storedCart);
-        }
-    };
-
-    const getCart = () => {
-        return cart;
-    };
 
     const addToCart = (product) => {
         const existingProduct = cart.find((item) => item.id === product.id);
@@ -71,6 +56,13 @@ const CartProvider = ({ children }) => {
         0
     );
 
+    const fetchCart = () => {
+        const storedCart = localStorage.getItem('cart');
+        return storedCart ? JSON.parse(storedCart) : [];
+    }
+
+    const clearCart = () => setCart([]);
+
     return (
         <CartContext.Provider
             value={{
@@ -78,11 +70,11 @@ const CartProvider = ({ children }) => {
                 addToCart,
                 removeFromCart,
                 updateCart,
-                getCart,
                 amount,
                 incrementQuantity,
                 decrementQuantity,
                 fetchCart,
+                clearCart,
             }}
         >
             {children}

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjsu5W2qG9ezC-qcSZ4h16xG4tTMxUQtY",
@@ -17,4 +18,34 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { auth, db, doc, getDoc };
+const signUp = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const signIn = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log(user);
+    return user; // Ensure you return the user
+  } catch (error) {
+    console.log(error);
+    throw error; // Rethrow the error to be handled in Login.js
+  }
+}
+
+const logOut = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { auth, db, doc, getDoc, signUp, signIn, logOut };
